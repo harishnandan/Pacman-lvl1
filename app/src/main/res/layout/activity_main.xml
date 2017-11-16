@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.harish.eat.MainActivity">
+
+    <TextView
+        android:id="@+id/scorelabel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Score:0"
+       android:textSize="18sp"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"/>
+
+      <FrameLayout
+          android:id="@+id/frame"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+          <TextView
+              android:id="@+id/startlabel"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Tap to Play"
+              android:textSize="36sp"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginTop="130dp"/>
+          <ImageView
+              android:id="@+id/box"
+              android:layout_width="50dp"
+              android:layout_height="50dp"
+              android:src="@drawable/pac1"
+              android:layout_gravity="center_vertical"/>
+
+          <ImageView
+              android:id="@+id/black"
+              android:layout_width="24dp"
+              android:layout_height="24dp"
+              android:src="@drawable/black"
+              />
+          <ImageView
+              android:id="@+id/blue"
+              android:layout_width="20dp"
+              android:layout_height="20dp"
+              android:src="@drawable/blue"/>
+          <ImageView
+              android:id="@+id/yellow"
+              android:layout_width="18dp"
+              android:layout_height="18dp"
+              android:src="@drawable/yellow"/>
+      </FrameLayout>
+</LinearLayout>
