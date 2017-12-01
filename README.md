@@ -16,6 +16,6 @@ The motivation behind the creation and maintenance of the project is this <a hre
 
 Just install Andoroid Studio. Follow this <a href="https://in.udacity.com/course/how-to-install-android-studio--ud808">link</a>. After this just fork and clone. See this for help: <a href="https://blog.kossiitkgp.in/an-informal-introduction-to-kwoc-62fc5e686f79">Introduction to KWoC</a> . After all thus try running it on your mobile phone. Enjoy the basic version!!
 
-##Help
+## Help
 
 For more help join this facebook group <a href="https://www.facebook.com/groups/127895284549751">Pacman</a>
