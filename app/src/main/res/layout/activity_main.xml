@@ -11,10 +11,11 @@
         android:id="@+id/scorelabel"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Score:0"
-       android:textSize="18sp"
+        android:gravity="center_vertical"
         android:paddingLeft="10dp"
-        android:gravity="center_vertical"/>
+        android:paddingRight="10dp"
+        android:text="Score:0"
+        android:textSize="18sp" />
 
       <FrameLayout
           android:id="@+id/frame"
@@ -29,12 +30,14 @@
               android:textSize="36sp"
               android:layout_gravity="center_horizontal"
               android:layout_marginTop="130dp"/>
+
           <ImageView
               android:id="@+id/box"
               android:layout_width="50dp"
               android:layout_height="50dp"
+              android:layout_gravity="center_vertical"
               android:src="@drawable/pac1"
-              android:layout_gravity="center_vertical"/>
+              android:visibility="visible" />
 
           <ImageView
               android:id="@+id/black"
