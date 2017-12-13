@@ -58,4 +58,9 @@ public class result extends AppCompatActivity {
     public void tryAgain(View view){
         startActivity(new Intent(getApplicationContext(),MainActivity.class));
     }
+
+    public void onBackPressed() {
+        //  super.onBackPressed();
+        moveTaskToBack(true);
+    }
 }
