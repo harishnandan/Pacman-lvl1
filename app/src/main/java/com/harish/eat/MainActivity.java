@@ -3,6 +3,7 @@ package com.harish.eat;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -52,12 +53,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-      scorelabel=(TextView)findViewById(R.id.scorelabel);
+        scorelabel=(TextView)findViewById(R.id.scorelabel);
         startlabel=(TextView)findViewById(R.id.startlabel);
         box=(ImageView)findViewById(R.id.box);
         black=(ImageView)findViewById(R.id.black);
         blue=(ImageView)findViewById(R.id.blue);
         yellow=(ImageView)findViewById(R.id.yellow);
+
+        Typeface arcadeTypeface = Typeface.createFromAsset(getAssets(), "fonts/arcade.ttf");
+        scorelabel.setTypeface(arcadeTypeface);
+        startlabel.setTypeface(arcadeTypeface);
 
         WindowManager wm=getWindowManager();
         Display disp=wm.getDefaultDisplay();
