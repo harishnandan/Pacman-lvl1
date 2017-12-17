@@ -33,30 +33,28 @@ public class result extends AppCompatActivity {
         Button tryAgainButton = (Button) findViewById(R.id.tryAgain);
         tryAgainButton.setTypeface(pacmanTypeface);
 
-        TextView scorelabel=(TextView)findViewById(R.id.scorelabel);
-        TextView highScoreLabel=(TextView)findViewById(R.id.highScoreLabel);
+        TextView scorelabel = (TextView) findViewById(R.id.scorelabel);
+        TextView highScoreLabel = (TextView) findViewById(R.id.highScoreLabel);
 
-        int score=getIntent().getIntExtra("SCORE",0);
-        scorelabel.setText(score+"");
+        int score = getIntent().getIntExtra("SCORE", 0);
+        scorelabel.setText(score + "");
 
-        SharedPreferences settings=getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
-        int highScore=settings.getInt("HIGH_SCORE",0);
+        SharedPreferences settings = getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
+        int highScore = settings.getInt("HIGH_SCORE", 0);
 
-        if(score>highScore){
-            highScoreLabel.setText("High Score : "+score);
+        if (score > highScore) {
+            highScoreLabel.setText("High Score : " + score);
 
-            SharedPreferences.Editor editor=settings.edit();
-            editor.putInt("HIGH_SCORE",score);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("HIGH_SCORE", score);
             editor.commit();
-        }
-        else
-        {
-            highScoreLabel.setText("High Score : "+highScore);
+        } else {
+            highScoreLabel.setText("High Score : " + highScore);
         }
     }
 
-    public void tryAgain(View view){
-        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+    public void tryAgain(View view) {
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 
     public void onBackPressed() {
