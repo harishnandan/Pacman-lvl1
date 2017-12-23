@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         scorelabel.setTypeface(arcadeTypeface);
         startlabel.setTypeface(arcadeTypeface);
 
+
         WindowManager wm = getWindowManager();
         Display disp = wm.getDefaultDisplay();
         Point size = new Point();
