@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3F51B5"
     android:orientation="vertical"
     android:background="#3F51B5"
     tools:context="com.harish.eat.MainActivity">
@@ -16,45 +17,48 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="Score:0"
+        android:textColor="#fdff00"
         android:textSize="18sp" />
 
-      <FrameLayout
-          android:id="@+id/frame"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent">
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-          <TextView
-              android:id="@+id/startlabel"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Tap to Play"
-              android:textSize="16sp"
-              android:layout_gravity="center_horizontal"
-              android:layout_marginTop="200dp"/>
+        <TextView
+            android:id="@+id/startlabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="200dp"
+            android:text="Tap to Play"
+            android:textColor="#fdff00"
+            android:textSize="16sp" />
 
-          <ImageView
-              android:id="@+id/box"
-              android:layout_width="50dp"
-              android:layout_height="50dp"
-              android:layout_gravity="center_vertical"
-              android:src="@drawable/pac1"
-              android:visibility="visible" />
+        <ImageView
+            android:id="@+id/box"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/pac1"
+            android:visibility="visible" />
 
-          <ImageView
-              android:id="@+id/black"
-              android:layout_width="24dp"
-              android:layout_height="24dp"
-              android:src="@drawable/black"
-              />
-          <ImageView
-              android:id="@+id/blue"
-              android:layout_width="20dp"
-              android:layout_height="20dp"
-              android:src="@drawable/blue"/>
-          <ImageView
-              android:id="@+id/yellow"
-              android:layout_width="18dp"
-              android:layout_height="18dp"
-              android:src="@drawable/yellow"/>
-      </FrameLayout>
+        <ImageView
+            android:id="@+id/black"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/black" />
+
+        <ImageView
+            android:id="@+id/blue"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/blue" />
+
+        <ImageView
+            android:id="@+id/yellow"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/yellow" />
+    </FrameLayout>
 </LinearLayout>
