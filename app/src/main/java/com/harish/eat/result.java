@@ -1,13 +1,16 @@
 package com.harish.eat;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -20,29 +23,45 @@ public class result extends AppCompatActivity {
     MediaPlayer player;
     AssetFileDescriptor afd;
 
+    private boolean mIsBound = false;
+    private boolean misPlaying = true;
+    private MusicService mServ;
+    private ServiceConnection Scon =new ServiceConnection(){
+
+        public void onServiceConnected(ComponentName name, IBinder
+                binder) {
+            mServ = ((MusicService.ServiceBinder)binder).getService();
+        }
+
+        public void onServiceDisconnected(ComponentName name) {
+            mServ = null;
+        }
+    };
+
+    void doBindService(){
+        bindService(new Intent(this,MusicService.class),
+                Scon,Context.BIND_AUTO_CREATE);
+        mIsBound = true;
+    }
+
+    void doUnbindService()
+    {
+        if(mIsBound)
+        {
+            unbindService(Scon);
+            mIsBound = false;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        try {
-            // Read the music file from the asset folder
-            afd = getAssets().openFd("pacman_ringtone.mp3");
-            // Creation of new media player;
-            player = new MediaPlayer();
-            // Set the player music source.
-            player.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-            // Set the looping and play the music.
-            player.setLooping(true);
-            player.prepare();
-            player.start();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        int maxVolume = 50, currVolume = 25; //you can set volume accordingly 25 is half of max volume ie, 50
-        float log1=(float)(Math.log(maxVolume-currVolume)/Math.log(maxVolume));
-        player.setVolume(1-log1, 1-log1);
+        doBindService();
+        Intent music = new Intent();
+        music.setClass(this,MusicService.class);
+        startService(music);
 
         Typeface pacmanTypeface = Typeface.createFromAsset(getAssets(), "fonts/pac-font.ttf");
         Typeface arcadeTypeface = Typeface.createFromAsset(getAssets(), "fonts/arcade.ttf");
@@ -80,6 +99,13 @@ public class result extends AppCompatActivity {
     }
 
     public void tryAgain(View view) {
+        MusicService mServ = new MusicService();
+
+        Intent music = new Intent();
+        music.setClass(this,MusicService.class);
+        stopService(music);
+
+        mServ.onDestroy();
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 
@@ -88,25 +114,34 @@ public class result extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public void onPause() {
+    @Override
+    protected void onPause() {
         super.onPause();
-        player.pause();
+        if (misPlaying) {
+            mServ.pauseMusic();
+            misPlaying = false;
+        }
     }
 
-    public void onResume() {
+    @Override
+    protected void onResume() {
         super.onResume();
-        try {
-            player.start();
-        }
-        catch (NullPointerException e){
-            e.printStackTrace();
+        if (!misPlaying) {
+            mServ.resumeMusic();
+            misPlaying = true;
         }
     }
 
-    protected void onStop() {
-        super.onStop();
-        player.stop();
-        player = null;
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        MusicService mServ = new MusicService();
+
+        Intent music = new Intent();
+        music.setClass(this,MusicService.class);
+        stopService(music);
+
+        mServ.onDestroy();
     }
 
 }
